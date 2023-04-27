@@ -1,0 +1,70 @@
+﻿@model IEnumerable<DesafioTechZoe.Models.TaskModel>
+
+@{
+    ViewData["Title"] = "Lista de tarefas";
+}
+
+<div class="row">
+    <div class="col">Remover tarefa da lista</div>
+    <div class="col">Concluir tarefa</div>
+</div>
+<div class="row pt-1">
+    <div class="col">
+        <input type="text" class="form-control" />
+    </div>
+    <div class="col">
+        <input type="text" class="form-control" />
+    </div>
+</div>
+<div class="row pt-1">
+    <div class="col">
+        <a class="btn btn-outline-primary btn-sm" asp-action="Delete" asp-route-id="2" >Remover</a>
+    </div>
+    <div class="col">
+        <a class="btn btn-outline-primary btn-sm" asp-action="Delete" asp-route-id="2">Concluir</a>
+    </div>
+</div>
+
+
+<h1>Lista de tarefas</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Adicionar</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Descrição
+            </th>
+            <th>
+                Concluído
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsCompleted)
+                </td>
+                <td>
+                    <a class="btn btn-outline-primary btn-sm" asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                    <a class="btn btn-outline-info btn-sm" asp-action="Details" asp-route-id="@item.Id">Detalhe</a> |
+                    <a class="btn btn-outline-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Remover</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
