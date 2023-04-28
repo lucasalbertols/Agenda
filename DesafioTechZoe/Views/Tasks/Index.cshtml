@@ -9,19 +9,13 @@
     <div class="col">Concluir tarefa</div>
 </div>
 <div class="row pt-1">
-    <div class="col">
-        <input type="text" class="form-control" />
+    <div class="col d-flex">
+        <input type="number" id="idRemove" class="form-control" />
+        <a class="btn btn-outline-primary btn-sm" onclick="removeTask()">Remover</a>
     </div>
-    <div class="col">
-        <input type="text" class="form-control" />
-    </div>
-</div>
-<div class="row pt-1">
-    <div class="col">
-        <a class="btn btn-outline-primary btn-sm" asp-action="Delete" asp-route-id="2" >Remover</a>
-    </div>
-    <div class="col">
-        <a class="btn btn-outline-primary btn-sm" asp-action="Delete" asp-route-id="2">Concluir</a>
+    <div class="col d-flex">
+        <input type="number" id="idComplete" class="form-control" />
+        <a class="btn btn-outline-primary btn-sm" onclick="completeTask()">Concluir</a>
     </div>
 </div>
 
@@ -68,3 +62,11 @@
         }
     </tbody>
 </table>
+<script>
+    function removeTask() {
+        window.location.href = 'Tasks/Delete/' + $('#idRemove').val();
+    }
+    function completeTask() {
+        window.location.href = 'Tasks/CompleteTask/' + $('#idComplete').val();
+    }
+</script>

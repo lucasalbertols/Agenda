@@ -21,9 +21,9 @@ namespace DesafioTechZoe.Controllers
         // GET: Tasks
         public async Task<IActionResult> Index()
         {
-              return _context.Tasks != null ? 
-                          View(await _context.Tasks.ToListAsync()) :
-                          Problem("Entity set 'Context.Tasks'  is null.");
+            return _context.Tasks != null ?
+                        View(await _context.Tasks.ToListAsync()) :
+                        Problem("Entity set 'Context.Tasks'  is null.");
         }
 
         // GET: Tasks/Details/5
@@ -149,14 +149,32 @@ namespace DesafioTechZoe.Controllers
             {
                 _context.Tasks.Remove(task);
             }
-            
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        // GET: Tasks/CompleteTask/5
+        public async Task<IActionResult> CompleteTask(int? id)
+        {
+            if (id == null || _context.Tasks == null)
+            {
+                return View("NotFound");
+            }
+            var task = await _context.Tasks.FindAsync(id);
+            if (task == null)
+            {
+                return View("NotFound");
+            }
+            task.IsCompleted = true;
+            _context.Update(task);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool TaskExists(int id)
         {
-          return (_context.Tasks?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Tasks?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
