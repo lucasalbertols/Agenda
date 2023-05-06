@@ -1,6 +1,6 @@
-# DesafioTechZoe
+# Agenda | Integrando Banco de Dados
 
-Projeto desenvolvido para resolver o desafio da Techzoe.
+Projeto desenvolvido para integrar taferas realizadas e armazenadas em um banco de dados.
 
 ## 📋 Requisitos
 
