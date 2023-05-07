@@ -1,4 +1,4 @@
-# Agenda | Integrando Banco de Dados
+# Lista de tarefas | Integrando Banco de Dados
 
 Projeto desenvolvido para integrar taferas realizadas e armazenadas em um banco de dados.
 
